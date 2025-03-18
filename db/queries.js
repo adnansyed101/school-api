@@ -6,4 +6,15 @@ async function getSchools() {
   return result;
 }
 
-console.log(result);
+async function createSchool(name, address, latitude, longitude) {
+  const result = await pool.query(
+    `
+        INSERT INTO schools (name, address, latitude, longitude) VALUES (?,?,?,?)
+        `,
+    [name, address, latitude, longitude]
+  );
+
+  return result;
+}
+
+module.exports = { getSchools, createSchool };
