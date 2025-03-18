@@ -4,8 +4,6 @@ import { getSchools, createSchool } from "./db/queries.js";
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-console.log(process.env.PORT);
-
 app.use(express.json());
 
 app.get("/", (_req, res) => {
@@ -13,10 +11,35 @@ app.get("/", (_req, res) => {
 });
 
 app.get("/listSchools", async (_req, res) => {
-  const schools = await getSchools();
-  console.log(schools);
+  try {
+    const schools = await getSchools();
+    res.send(schools);
+  } catch (err) {
+    console.log("Error in getting schools: " + err.message);
+    res
+      .status(500)
+      .json({ success: false, message: "Error in getting schools." });
+  }
+});
 
-  res.send(schools);
+app.post("/addSchool", async (req, res) => {
+  const { name, address, latitude, longitude } = req.body;
+
+  if (!name || !address || !latitude || !longitude) {
+    return res
+      .status(400)
+      .send({ success: false, message: "Add all information" });
+  }
+
+  try {
+    const newSchool = await createSchool(name, address, latitude, longitude);
+    res.send(newSchool);
+  } catch (err) {
+    console.log("Error in creating schools: " + err.message);
+    res
+      .status(500)
+      .json({ success: false, message: "Error in creating schools." });
+  }
 });
 
 app.use((err, _req, res, _next) => {
