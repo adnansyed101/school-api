@@ -10,9 +10,11 @@ app.get("/", (_req, res) => {
   res.send("Hello From SchoolApi");
 });
 
-app.get("/listSchools", async (_req, res) => {
+app.get("/listSchools", async (req, res) => {
+  const { latitude, longitude } = req.query;
+
   try {
-    const schools = await getSchools();
+    const schools = await getSchools(latitude, longitude);
     res.send(schools);
   } catch (err) {
     console.log("Error in getting schools: " + err.message);
