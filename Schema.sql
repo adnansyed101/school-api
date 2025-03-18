@@ -5,8 +5,8 @@ CREATE TABLE schools (
   id integer PRIMARY KEY AUTO_INCREMENT,
   name VARCHAR(255) NOT NULL,
   address VARCHAR(255) NOT NULL,
-  lat FLOAT(8,6) NOT NULL,
-  long FLOAT(9,6) NOT NULL,
+  latitude FLOAT(8,6) NOT NULL,
+  longitude FLOAT(9,6) NOT NULL,
   created TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
