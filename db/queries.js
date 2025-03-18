@@ -17,4 +17,4 @@ async function createSchool(name, address, latitude, longitude) {
   return result;
 }
 
-module.exports = { getSchools, createSchool };
+export { getSchools, createSchool };
