@@ -1,7 +1,10 @@
 import pool from "./database.js";
 
-async function getSchools() {
-  const [result] = await pool.query("SELECT * FROM schools");
+async function getSchools(latitude, longitude) {
+  const [result] = await pool.query(
+    "SELECT * FROM schools ORDER BY (POW((longitude - ? ),2) + POW((latitude - ? ),2))",
+    [longitude, latitude]
+  );
 
   return result;
 }
