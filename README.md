@@ -4,7 +4,9 @@
 
 A basic school REST api created using express and MySql. The server is deployed in render and database in cloud console. The server is not performant. The POST request will create a school and the GET request will show the list of schools based on the users given latitude and longitude.
 
-# [School API Live Link](https://school-api-56jt.onrender.com)
+## [School API Live Link](https://school-api-56jt.onrender.com)
+
+## [Postman Collection Link](https://school-8967.postman.co/workspace/School-Workspace~e9d03ec2-20c6-4498-998d-4d954f466d88/collection/33505002-32b60853-9d17-4aa2-9b41-3293a171d11f?action=share&creator=33505002)
 
 ## Recommended Link
 
